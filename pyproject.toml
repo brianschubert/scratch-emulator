@@ -9,6 +9,10 @@ packages = [{ from = "src", include = "rtm_wrapper_gp" }]
 [tool.poetry.dependencies]
 python = "^3.9"
 
+[tool.poetry.group.nb.dependencies]
+jupyter = "^1.0.0"
+matplotlib = "^3.7.2"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
