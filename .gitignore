@@ -3,3 +3,6 @@
 
 # Build and tooling artifacts
 __pycache__/
+
+ # Misc
+/notebooks/scratch*.ipynb
