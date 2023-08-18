@@ -6,3 +6,4 @@ __pycache__/
 
  # Misc
 /notebooks/scratch*.ipynb
+/notebooks/*.nc

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "rtm-wrapper-gui"
+name = "rtm-wrapper-gp"
 version = "0.1.0-dev"
 description = ""
 authors = ["Brian Schubert <schubert.b@northeastern.edu>"]
@@ -8,10 +8,21 @@ packages = [{ from = "src", include = "rtm_wrapper_gp" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+rtm-wrapper = { git = "https://github.com/brianschubert/rtm-wrapper.git", rev = "develop", extras = ["6s"] }
+gpytorch = "^1.11"
+# Skip 2.0.1 with nvidia dependency bug.
+# https://stackoverflow.com/q/76327419
+torch = ">=2.0.0, !=2.0.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+isort = "^5.12.0"
+nbqa = "^1.7.0"
 
 [tool.poetry.group.nb.dependencies]
 jupyter = "^1.0.0"
 matplotlib = "^3.7.2"
+alive-progress = "^3.1.4"
 
 [build-system]
 requires = ["poetry-core"]
