@@ -1,10 +1,12 @@
 [tool.poetry]
-name = "rtm-wrapper-gp"
+name = "scratch-emulator"
 version = "0.1.0-dev"
 description = ""
 authors = ["Brian Schubert <schubert.b@northeastern.edu>"]
 readme = "README.md"
-packages = [{ from = "src", include = "rtm_wrapper_gp" }]
+packages = [
+    { from = "src", include = "scratch_emulator" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
