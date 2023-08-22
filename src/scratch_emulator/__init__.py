@@ -2,20 +2,20 @@ import importlib.metadata
 
 import numpy as np
 import rtm_wrapper.simulation as rtm_sim
-import torch
 import xarray as xr
 
-__version__ = importlib.metadata.version("rtm_wrapper_gp")
+__version__ = importlib.metadata.version("scratch-emulator")
 
 
-def dataarray2tensors(
+def dataarray2xy(
     data: xr.DataArray,
-) -> tuple[tuple[str, ...], torch.Tensor, torch.Tensor]:
+) -> tuple[tuple[str, ...], np.ndarray, np.ndarray]:
     input_coords = [
         coord.name
         for dim in data.dims
         for coord in data.coords.values()
-        if coord.name.partition("__")[0] in rtm_sim.INPUT_TOP_NAMES
+        # TODO tidy sweep coordinate detection.
+        if any(coord.name.startswith(top_name) for top_name in rtm_sim.INPUT_TOP_NAMES)
         and coord.dims == (dim,)
     ]
     input_coords.sort()
@@ -29,8 +29,8 @@ def dataarray2tensors(
             getattr(point, coord).item() for coord in input_coords  # type: ignore
         )
 
-    x = torch.tensor(input_points)
-    y = torch.tensor(data.values.ravel())
+    x = np.array(input_points)
+    y = data.values.reshape(-1, 1)
 
     return tuple(input_coords), x, y
 
