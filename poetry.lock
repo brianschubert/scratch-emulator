@@ -2957,7 +2957,7 @@ splib07 = ["splib07-loader @ git+https://github.com/brianschubert/splib07-loader
 type = "git"
 url = "https://github.com/brianschubert/rtm-wrapper.git"
 reference = "develop"
-resolved_reference = "6aa62d3e692a3d8f087af9e531dc54dfcfc146ef"
+resolved_reference = "4a84ebb3ca7aecf65afdaced0745032407d76e7e"
 
 [[package]]
 name = "scikit-learn"
