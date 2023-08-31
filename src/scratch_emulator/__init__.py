@@ -1,3 +1,4 @@
+import hashlib
 import importlib.metadata
 
 import numpy as np
@@ -5,6 +6,8 @@ import rtm_wrapper.simulation as rtm_sim
 import xarray as xr
 
 __version__ = importlib.metadata.version("scratch-emulator")
+
+from rtm_wrapper.simulation import SweepSimulation
 
 
 def dataarray2xy(
@@ -37,3 +40,16 @@ def dataarray2xy(
 
 def unit2range(arr: np.ndarray, bot: float, top: float) -> np.ndarray:
     return arr * (top - bot) + bot
+
+
+def sweep_hash(sweep: SweepSimulation) -> str:
+    """
+    Compute hash identifying a particular sweep. Not guaranteed to be stable
+    between versions.
+    """
+    h = hashlib.new("sha256")
+    for name, coord in sweep.sweep_spec.coords.items():
+        h.update(coord.values.tobytes())
+    h.update(repr(sweep.base).encode("ascii"))
+
+    return h.hexdigest()
