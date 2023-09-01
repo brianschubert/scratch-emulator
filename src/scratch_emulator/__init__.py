@@ -1,8 +1,11 @@
 import hashlib
 import importlib.metadata
+import itertools
+from typing import Callable, Literal
 
 import numpy as np
 import rtm_wrapper.simulation as rtm_sim
+import scipy.spatial.distance as sci_dist
 import xarray as xr
 
 __version__ = importlib.metadata.version("scratch-emulator")
@@ -53,3 +56,38 @@ def sweep_hash(sweep: SweepSimulation) -> str:
     h.update(repr(sweep.base).encode("ascii"))
 
     return h.hexdigest()
+
+
+def brute_maximin(
+    num_samples: int,
+    dims: int,
+    iterations: int = 1000,
+    pick: Literal["random", "min"] = "min",
+    metric: str | Callable[[np.ndarray, np.ndarray], float] = "euclidean",
+    rng: np.random.Generator = np.random.default_rng(),
+) -> np.ndarray:
+    samples = rng.uniform(size=(num_samples, dims))
+
+    all_dists = sci_dist.cdist(samples, samples, metric)
+    np.fill_diagonal(all_dists, np.inf)
+    min_dist = all_dists.min()
+
+    for _ in itertools.repeat(None, iterations):
+        if pick == "min":
+            i_row = np.unravel_index(np.argmin(all_dists), all_dists.shape)[0]
+        else:
+            i_row = rng.integers(0, num_samples)
+
+        old_row = samples[i_row, :]
+        samples[i_row, :] = rng.uniform(size=dims)
+
+        new_dists = sci_dist.cdist(samples, samples, metric)
+        np.fill_diagonal(new_dists, np.inf)
+
+        if (d := new_dists.min()) > min_dist:
+            min_dist = d
+            all_dists = new_dists
+        else:
+            samples[i_row, :] = old_row
+
+    return samples
