@@ -3526,51 +3526,6 @@ typing-extensions = ">=3.6.6"
 wrapt = ">=1.11.0,<1.15"
 
 [[package]]
-name = "tensorflow-cpu"
-version = "2.12.0"
-description = "TensorFlow is an open source machine learning framework for everyone."
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "tensorflow_cpu-2.12.0-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:734ce850e2b3493041bdc071b594f0f78d35e4bfce5a7e0a98d449b20420e01d"},
-    {file = "tensorflow_cpu-2.12.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:361b19b5a64bf611beccd22de1fc04f614a8c157ac99893d9702ed24932018d6"},
-    {file = "tensorflow_cpu-2.12.0-cp310-cp310-win_amd64.whl", hash = "sha256:d5ad746bf8c87d9a9fcea4698828ba1d101a7f7bfd323a2571130374a192578b"},
-    {file = "tensorflow_cpu-2.12.0-cp311-cp311-macosx_10_15_x86_64.whl", hash = "sha256:b9c8f0d0658da8a5b25a4fe5ca315f86c449eb11e30d79cea49c7658be75a825"},
-    {file = "tensorflow_cpu-2.12.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e8c7047552a2d759f3e65ac13e36dd24bb5fec2e6576e848287811ec44b3d62f"},
-    {file = "tensorflow_cpu-2.12.0-cp311-cp311-win_amd64.whl", hash = "sha256:8fdb636736f95094368bc7d26bb3b8ed93ba820cc5d95f847e00bf4a7645463d"},
-    {file = "tensorflow_cpu-2.12.0-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:5beeb99d2a1cc1383ca981513c35a4a18157e52d91a89e69c94cb7b7e411f0d8"},
-    {file = "tensorflow_cpu-2.12.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a406f751180fe5282776e8bc84f39a2dc2b796c3ae35fbe20e4edc86ec580dd3"},
-    {file = "tensorflow_cpu-2.12.0-cp38-cp38-win_amd64.whl", hash = "sha256:b6ba926f9a56cdf0657defc6d046735e31ded383054f67c1a16ef2b0511f68d7"},
-    {file = "tensorflow_cpu-2.12.0-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:ef4f142b6fe75fcc71ada6331ed2a15ed61b7034187049d0ef1dac482d52db78"},
-    {file = "tensorflow_cpu-2.12.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:55685b9a19c8ecb2587fb53914c045b188ed0289a2c6495e4e59d5fb082da9cc"},
-    {file = "tensorflow_cpu-2.12.0-cp39-cp39-win_amd64.whl", hash = "sha256:374b15d1cec1a62006e388062e89dd4899a121272d41ea5d3fcbcc96e2d875c9"},
-]
-
-[package.dependencies]
-absl-py = ">=1.0.0"
-astunparse = ">=1.6.0"
-flatbuffers = ">=2.0"
-gast = ">=0.2.1,<=0.4.0"
-google-pasta = ">=0.1.1"
-grpcio = ">=1.24.3,<2.0"
-h5py = ">=2.9.0"
-jax = ">=0.3.15"
-keras = ">=2.12.0,<2.13"
-libclang = ">=13.0.0"
-numpy = ">=1.22,<1.24"
-opt-einsum = ">=2.3.2"
-packaging = "*"
-protobuf = ">=3.20.3,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<5.0.0dev"
-setuptools = "*"
-six = ">=1.12.0"
-tensorboard = ">=2.12,<2.13"
-tensorflow-estimator = ">=2.12.0,<2.13"
-tensorflow-io-gcs-filesystem = {version = ">=0.23.1", markers = "platform_machine != \"arm64\" or platform_system != \"Darwin\""}
-termcolor = ">=1.1.0"
-typing-extensions = ">=3.6.6"
-wrapt = ">=1.11.0,<1.15"
-
-[[package]]
 name = "tensorflow-estimator"
 version = "2.12.0"
 description = "TensorFlow Estimator."
@@ -3657,12 +3612,12 @@ wrapt = ">=1.11.0,<1.15"
 
 [[package]]
 name = "tensorflow-probability"
-version = "0.22.1"
+version = "0.18.0"
 description = "Probabilistic modeling and statistical inference in TensorFlow"
 optional = false
-python-versions = ">=3.9"
+python-versions = "*"
 files = [
-    {file = "tensorflow_probability-0.22.1-py2.py3-none-any.whl", hash = "sha256:3035b936b028ea10bd3a9589329557f5b2c5ace813a6bff3f59acfe3226eef9b"},
+    {file = "tensorflow_probability-0.18.0-py2.py3-none-any.whl", hash = "sha256:80d57e7792c78586f12255ab4a7c359b7e86bc06d487fd629119d9e650624a18"},
 ]
 
 [package.dependencies]
@@ -4071,4 +4026,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.12"
-content-hash = "9d7ba4dc5cf3e059406829f36b59a0475bebcc1ac16f138d3915ec8b12c74197"
+content-hash = "408f341eb71ee2f538b69e35af45751613c8bf6d61232305191b356cfa13ec3c"
